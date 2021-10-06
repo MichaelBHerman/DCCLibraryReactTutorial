@@ -1,6 +1,8 @@
 import React from 'react';
+import Book from '../Book/Book';
 
-const  BookViewer = (props) => {
+
+const BookViewer = (props) => {
     return (<div className="row row-space">
         <div className="col-md-4"> 
         {/* button here to move to the previous book viewed */}
@@ -9,8 +11,7 @@ const  BookViewer = (props) => {
        
         <div className="col-md-4">
          {/* display book with cover here */}
-         <h1>{props.book.title}</h1>
-         <h4>{props.book.author}</h4>
+        <Book book={props.book} />
         
          </div>
            
