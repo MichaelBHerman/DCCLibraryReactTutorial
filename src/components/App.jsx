@@ -11,8 +11,30 @@ class App extends Component {
             {title: "Jurassic Park", author: "Michael Critchton"},
         ];
         this.state = {
-            bookNumber: 1
+            bookNumber: 0
         };
+    }
+
+    goToNextBook = () => {
+        let tempBookNumber = this.state.bookNumber;
+        tempBookNumber ++;
+        if(tempBookNumber === this.books.length){
+            tempBookNumber = 0;
+        }
+        this.setState({
+            bookNumber: tempBookNumber
+        });
+    }
+
+    goToPreviousBook = () => {
+        let tempBookNumber = this.state.bookNumber;
+        tempBookNumber = 0;
+        if(tempBookNumber < 0){
+            tempBookNumber = this.books.length - 1;
+        }
+        this.setState({
+            bookNumber: tempBookNumber
+        });
     }
 
     render(){
@@ -22,6 +44,7 @@ class App extends Component {
                 <div className="row">
                 <div className="col-md-4"> 
                     {/* button here to move to the previous book viewed */}
+                    <button onClick={this.goToPreviousBook}>Previous Book</button>
                     </div>
                    
                 <div className="col-md-4">
@@ -33,6 +56,7 @@ class App extends Component {
                        
                 <div className="col-md-4">
                      {/* button here to move to the next book to be viewed */}
+                     <button onClick={this.goToNextBook}>Next Book</button>
                      </div>
                 </div>
             </div>
